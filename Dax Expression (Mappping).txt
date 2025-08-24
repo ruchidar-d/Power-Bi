@@ -1,0 +1,6 @@
+= let
+    Source = Json.Document(Web.Contents("https://dev.virtualearth.net/REST/v1/Locations/" & Text.From([Latitude]) & "," & Text.From([Longitude]) & "?key='Your API Key'")),
+    Resources = Source[resourceSets]{0}[resources]{0},
+    PostalCode = Resources[address][postalCode]
+in
+    PostalCode
